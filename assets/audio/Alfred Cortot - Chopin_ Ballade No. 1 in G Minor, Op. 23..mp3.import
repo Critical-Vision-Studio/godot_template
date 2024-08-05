@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhj6nijgry0uq"
+path="res://.godot/imported/Alfred Cortot - Chopin_ Ballade No. 1 in G Minor, Op. 23..mp3-cfaae05387721736dfd3e766289279cd.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Alfred Cortot - Chopin_ Ballade No. 1 in G Minor, Op. 23..mp3"
+dest_files=["res://.godot/imported/Alfred Cortot - Chopin_ Ballade No. 1 in G Minor, Op. 23..mp3-cfaae05387721736dfd3e766289279cd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
