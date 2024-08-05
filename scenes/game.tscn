@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi6yymjat5wbk"]
+
+[ext_resource type="PackedScene" uid="uid://4nns56ldauka" path="res://scenes/player.tscn" id="1_35ije"]
+[ext_resource type="Texture2D" uid="uid://b08eh4j57xed8" path="res://assets/sprites/fortress.png" id="1_c4pak"]
+[ext_resource type="AudioStream" uid="uid://chg8fh8ri4ibq" path="res://assets/audio/EPMD - Music.mp3" id="2_u6gx0"]
+[ext_resource type="PackedScene" uid="uid://f0icdjyyta0h" path="res://scenes/settings.tscn" id="3_askwu"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(911, 505)
+
+[node name="Player" parent="." instance=ExtResource("1_35ije")]
+z_index = 1
+
+[node name="Fortress" type="Sprite2D" parent="."]
+position = Vector2(-15, 52)
+texture = ExtResource("1_c4pak")
+
+[node name="Settings" parent="." instance=ExtResource("3_askwu")]
+unique_name_in_owner = true
+visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_u6gx0")
+autoplay = true
+bus = &"Ingame"
