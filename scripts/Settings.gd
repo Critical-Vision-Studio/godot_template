@@ -6,10 +6,6 @@ extends CanvasLayer
 
 @onready var settings = %Settings
 
-func _input(event):
-	if event.is_action_pressed("escape"):
-		settings.visible = !settings.visible;
-
 
 func _on_menu_music_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(menu_music, linear_to_db(value))
@@ -20,3 +16,7 @@ func _on_music_slider_value_changed(value):
 func _on_sf_xvolume_value_changed(value):
 	AudioServer.set_bus_volume_db(SFX, linear_to_db(value))
 
+
+
+func _on_back_pressed():
+	settings.visible = false;

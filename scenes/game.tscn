@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi6yymjat5wbk"]
+[gd_scene load_steps=6 format=3 uid="uid://bi6yymjat5wbk"]
 
 [ext_resource type="PackedScene" uid="uid://4nns56ldauka" path="res://scenes/player.tscn" id="1_35ije"]
 [ext_resource type="Texture2D" uid="uid://b08eh4j57xed8" path="res://assets/sprites/fortress.png" id="1_c4pak"]
 [ext_resource type="AudioStream" uid="uid://chg8fh8ri4ibq" path="res://assets/audio/EPMD - Music.mp3" id="2_u6gx0"]
 [ext_resource type="PackedScene" uid="uid://f0icdjyyta0h" path="res://scenes/settings.tscn" id="3_askwu"]
+[ext_resource type="Script" path="res://scripts/ingame_settings.gd" id="5_eb0o7"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(911, 505)
@@ -15,11 +16,69 @@ z_index = 1
 position = Vector2(-15, 52)
 texture = ExtResource("1_c4pak")
 
-[node name="Settings" parent="." instance=ExtResource("3_askwu")]
-unique_name_in_owner = true
-visible = false
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_u6gx0")
 autoplay = true
 bus = &"Ingame"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("5_eb0o7")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -70.0
+offset_right = 71.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+color = Color(0.597838, 0.302303, 0.185038, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Settings" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Settings"
+flat = true
+
+[node name="Save" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Save
+"
+flat = true
+
+[node name="Exit" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Exit"
+flat = true
+
+[node name="Settings" parent="." instance=ExtResource("3_askwu")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Settings" to="CanvasLayer" method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Save" to="CanvasLayer" method="_on_save_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Exit" to="CanvasLayer" method="_on_exit_pressed"]

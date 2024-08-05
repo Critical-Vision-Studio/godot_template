@@ -10,12 +10,18 @@ texture_filter = 1
 anchors_preset = -1
 anchor_right = 0.225
 anchor_bottom = 0.069
-offset_left = 600.0
-offset_top = 396.0
-offset_right = 785.0
-offset_bottom = 495.48
+offset_left = 669.0
+offset_top = 420.0
+offset_right = 854.0
+offset_bottom = 549.48
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+layout_mode = 2
+color = Color(0.400698, 0.400698, 0.400698, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -23,14 +29,12 @@ theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
-metadata/_edit_lock_ = true
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 30
 columns = 2
-metadata/_edit_lock_ = true
 
 [node name="Menu Music volume" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -67,7 +71,27 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+flat = true
+alignment = 2
+
+[node name="Back" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Back"
+flat = true
+alignment = 2
+
 [connection signal="value_changed" from="PanelContainer/MarginContainer/GridContainer/MenuMusicSlider" to="." method="_on_menu_music_slider_value_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="changed" from="PanelContainer/MarginContainer/GridContainer/SFXvolume" to="." method="_on_sf_xvolume_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/GridContainer/SFXvolume" to="." method="_on_sf_xvolume_value_changed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/Back" to="." method="_on_back_pressed"]
